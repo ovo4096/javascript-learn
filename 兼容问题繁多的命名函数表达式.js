@@ -39,23 +39,23 @@ var f2 = function (tree, key) {
  * 以上阐述了命名函数表达式正确实现时的使用方式，但是遗憾的是 ECMAScript 历史规范中的错误和流行 JavaScript 引擎中
  * 的 Bug 带来的作用域和兼容性问题使它变的一团糟。
  *
- * 在 ES3 规范中 JavaScript 引擎被要求将命名函数表达式的作用域表示为一个对象，该作用域也继承了 Object.prototype 的属性，
+ * 在 ES3 规范中 JavaScript 引擎被要求将命名函数表达式的作用域视为一个对象，该作用域也继承了 Object.prototype 的属性，
  * 这意味着仅仅给函数表达式命名也会将 Object.prototype 中的属性引入作用域中。
  */
 var constructor = function () { return null; };
 var f3 = function f() {
   return constructor();
-}
+};
 
 console.log(f3()); // 在 ES3 环境中将返回 {}
 
 /**
- * 甚至有些 JavaScript 环境实现对匿名表达式实现也使用对象作用域
+ * 甚至有些 JavaScript 环境实现对匿名表达式也使用对象作用域
  */
 // var constructor = ....
 var f4 = function () {
   return constructor();
-}
+};
 
 console.log(f4()); // 在未正确实现的环境中将返回 {}
 
