@@ -90,7 +90,7 @@ var obj = {
     return 17;
   }
 };
-console.log(1 + obj); // "object: 17"
+console.log("1" + obj); // "117"
 
 /**
  * 真值表达式的隐式转换
