@@ -225,3 +225,37 @@ delete passwordHash;
 
   console.log(splice.read(["a", "b", "c", "d"])); // ["a-", "b-", "c-", "d-"]
 })();
+
+/**
+ * JavaScript 的子类继承自父类的实例属性和原型
+ */
+(function () {
+  function Cat(name) {
+    this.name = name;
+  }
+  Cat.prototype.meow = function () {
+    console.log(this.name + ": 喵~");
+  };
+  Cat.prototype.eat = function (food) {
+    console.log(this.name + " 正在吃 " + food);
+  };
+
+  var cat = new Cat("小花");
+
+  cat.meow();
+  cat.eat("小鱼");
+
+  function PetCat(name) {
+    Cat.call(this, name);
+  }
+  PetCat.prototype = Object.create(Cat.prototype);
+  PetCat.prototype.moe = function () {
+    console.log(this.name + " 正在撒娇");
+  };
+
+  var petCat = new PetCat("小白");
+
+  petCat.moe();
+  petCat.eat("主人");
+  petCat.meow();
+})();
