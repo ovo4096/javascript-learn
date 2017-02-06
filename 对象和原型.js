@@ -258,4 +258,12 @@ delete passwordHash;
   petCat.moe();
   petCat.eat("主人");
   petCat.meow();
+
+
+  /**
+   * hasOwnProperty 会忽视 prototype，所以将原型视为实例属性
+   */
+  console.log(petCat.hasOwnProperty("name")); // true
+  console.log(petCat.hasOwnProperty("moe")); // false
+  console.log(petCat.hasOwnProperty("meow")); // false
 })();
